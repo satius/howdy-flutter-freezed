@@ -1,11 +1,9 @@
 import 'package:flutter/foundation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-@immutable
-class Counter {
-  const Counter({@required this.data});
+part "counter.freezed.dart";
 
-  final int data;
-
-  @override
-  String toString() => "Counter(data: $data)";
+@freezed
+abstract class Counter with _$Counter {
+  factory Counter({@required int data}) = _Counter;
 }
