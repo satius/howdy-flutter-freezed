@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'counter.dart';
+
+
 void main() {
   runApp(MyApp());
 }
@@ -46,7 +49,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  Counter _counter = Counter()..data = 0;
 
   void _incrementCounter() {
     setState(() {
@@ -55,7 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
       // so that the display can reflect the updated values. If we changed
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
-      _counter++;
+      _counter..data = _counter.data + 1;
     });
   }
 
@@ -97,7 +100,7 @@ class _MyHomePageState extends State<MyHomePage> {
               'You have pushed the button this many times:',
             ),
             Text(
-              '$_counter',
+              _counter.data.toString(),
               style: Theme.of(context).textTheme.headline4,
             ),
           ],
