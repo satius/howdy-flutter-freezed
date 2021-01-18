@@ -86,8 +86,10 @@ class __$CounterCopyWithImpl<$Res> extends _$CounterCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$_Counter with DiagnosticableTreeMixin implements _Counter {
-  _$_Counter({@required this.data}) : assert(data != null);
+class _$_Counter extends _Counter with DiagnosticableTreeMixin {
+  _$_Counter({@required this.data})
+      : assert(data != null),
+        super._();
 
   @override
   final int data;
@@ -123,7 +125,8 @@ class _$_Counter with DiagnosticableTreeMixin implements _Counter {
       __$CounterCopyWithImpl<_Counter>(this, _$identity);
 }
 
-abstract class _Counter implements Counter {
+abstract class _Counter extends Counter {
+  _Counter._() : super._();
   factory _Counter({@required int data}) = _$_Counter;
 
   @override
