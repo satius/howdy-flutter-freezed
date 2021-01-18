@@ -8,6 +8,9 @@ part of 'counter.dart';
 // **************************************************************************
 
 T _$identity<T>(T value) => value;
+Counter _$CounterFromJson(Map<String, dynamic> json) {
+  return _Counter.fromJson(json);
+}
 
 /// @nodoc
 class _$CounterTearOff {
@@ -19,6 +22,11 @@ class _$CounterTearOff {
       data: data,
     );
   }
+
+// ignore: unused_element
+  Counter fromJson(Map<String, Object> json) {
+    return Counter.fromJson(json);
+  }
 }
 
 /// @nodoc
@@ -29,6 +37,7 @@ const $Counter = _$CounterTearOff();
 mixin _$Counter {
   int get data;
 
+  Map<String, dynamic> toJson();
   @JsonKey(ignore: true)
   $CounterCopyWith<Counter> get copyWith;
 }
@@ -85,11 +94,16 @@ class __$CounterCopyWithImpl<$Res> extends _$CounterCopyWithImpl<$Res>
   }
 }
 
+@JsonSerializable()
+
 /// @nodoc
 class _$_Counter extends _Counter with DiagnosticableTreeMixin {
   _$_Counter({@required this.data})
       : assert(data != null),
         super._();
+
+  factory _$_Counter.fromJson(Map<String, dynamic> json) =>
+      _$_$_CounterFromJson(json);
 
   @override
   final int data;
@@ -123,11 +137,18 @@ class _$_Counter extends _Counter with DiagnosticableTreeMixin {
   @override
   _$CounterCopyWith<_Counter> get copyWith =>
       __$CounterCopyWithImpl<_Counter>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_CounterToJson(this);
+  }
 }
 
 abstract class _Counter extends Counter {
   _Counter._() : super._();
   factory _Counter({@required int data}) = _$_Counter;
+
+  factory _Counter.fromJson(Map<String, dynamic> json) = _$_Counter.fromJson;
 
   @override
   int get data;
